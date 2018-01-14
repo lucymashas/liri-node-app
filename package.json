@@ -1,0 +1,27 @@
+{
+  "name": "liri",
+  "version": "1.0.0",
+  "description": "Liri Node First Project",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucymashas/liri-node-app.git"
+  },
+  "keywords": [
+    "liri"
+  ],
+  "author": "Lucy Mashas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucymashas/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/lucymashas/liri-node-app#readme",
+  "dependencies": {
+    "request": "^2.83.0",
+    "spotify-web-api-node": "^2.5.0",
+    "twitter": "^1.7.1"
+  }
+}
