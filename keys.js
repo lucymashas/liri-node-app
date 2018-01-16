@@ -8,5 +8,16 @@ var twitterKeys = {
   access_token_secret: 'DpGXY6xnTAzKQUkcZjlNb9KmEO6N2KwL4BmKSH3PTOfYy',
 }
 
-module.exports = twitterKeys;
+var spotify = {
+  id: 'b2878a6caddf4b4983a57b27e474feee',
+  secret: 'c7c31eb4ceb0467aa3ff7f15b5191090'
+};
+
+module.exports = {
+	twitterKeys: twitterKeys,
+	spotify: spotify
+}
+
+
+
 

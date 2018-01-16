@@ -1,0 +1,1 @@
+/usr/local/bin/node,/Users/luzmashas/class/liri-node-app/liri_append.js,spotify-this-song/usr/local/bin/node,/Users/luzmashas/class/liri-node-app/liri_append.js,spotify-this-song,Havana
