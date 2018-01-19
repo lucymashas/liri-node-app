@@ -20,9 +20,11 @@
   },
   "homepage": "https://github.com/lucymashas/liri-node-app#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "fs": "0.0.1-security",
     "node-spotify-api": "^1.0.7",
     "request": "^2.83.0",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "wordwrap": "^1.0.0"
   }
 }
