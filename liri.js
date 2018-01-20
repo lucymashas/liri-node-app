@@ -13,11 +13,11 @@ var textArr = [];
 
 function createLog(){
 	if (inputString[2] === "my-tweets"){
-		var logFile = "Ask Me:  " + inputString[2] + " Request: " + inputString[3] + "\n" +                "Output:  " + textArr + "\n";
+		var logFile = "Ask Me:  " + inputString[2] + "\nOutput:  " + textArr + "\n";
 	}else{
 		var logFile = "Ask Me:  " + inputString[2] + " Request: " + inputString[3] + "\n" +                "Output:  " + text + "\n";
 	}
-	
+	~
 	fs.appendFile("log.txt",logFile, function(err){
 		if (err){
 			console.log(err);
@@ -99,8 +99,8 @@ function mytweets(){
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		if (!error) {
   			for (var t=0; t < tweets.length; t++){
-		    	textArr[t] = (wrap("Creation Date:  " + tweets[t].created_at
-														 + "\nFeed:  " + tweets[t].text + "\n"));
+		    	textArr[t] = (wrap("Date:  " + tweets[t].created_at
+														 + "  Feed:  " + tweets[t].text + "\n"));
 					console.log(textArr[t]);
 				}
 				
