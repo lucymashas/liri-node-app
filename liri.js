@@ -81,7 +81,7 @@ function mytweets(){
   		if (!error) {
   			for (var t=0; t < tweets.length; t++){
 		    	console.log(wrap("Creation Date:  " + tweets[t].created_at));
-		    	console.log(wrap("Feed:  " + tweets[t].text + "\n"));
+					console.log(wrap("Feed:  " + tweets[t].text + "\n"));
   			}
   		}else{
   			console.log(error);	
@@ -108,9 +108,8 @@ function scenario(askMe){
 var inputString = process.argv;
 
 
-fs.appendFile('log.txt', inputString + "\n", function(err) {
+fs.appendFile('log.txt', inputString + "\n" ,function(err) {
   if (err) {
-    console.log(err);
   }
 });
 
