@@ -8,6 +8,22 @@ var wrap = require('wordwrap')(5,75);
 
 var client = new Twitter(keys.twitterKeys);
 var spotify = new Spotify(keys.spotify);
+var text = "";
+var textArr = [];
+
+function createLog(){
+	if (inputString[2] === "my-tweets"){
+		var logFile = "Ask Me:  " + inputString[2] + " Request: " + inputString[3] + "\n" +                "Output:  " + textArr + "\n";
+	}else{
+		var logFile = "Ask Me:  " + inputString[2] + " Request: " + inputString[3] + "\n" +                "Output:  " + text + "\n";
+	}
+	
+	fs.appendFile("log.txt",logFile, function(err){
+		if (err){
+			console.log(err);
+		}
+	});
+}
 
 function readFile(){
 	fs.readFile("random.txt", "utf8", function(error, data) {
@@ -40,15 +56,16 @@ function movieInfo(){
 	  		}else {
 	  		//Movie Information
 	  		
-		    console.log(wrap ("\nMovie Title: " + JSON.parse(body).Title 
+		    text = (wrap ("\nMovie Title: " + JSON.parse(body).Title 
 		               +"\nMovie was released in: " + JSON.parse(body).Year
 		               +"\nIMDB Movie rating: " + JSON.parse(body).imdbRating + '\n'
 		               +JSON.parse(body).Ratings[1].Source + " Rating: " + JSON.parse(body).Ratings[1].Value 
 		               +"\nThe movie was produced in: " + JSON.parse(body).Country
 		  	           +"\nLanguage: " + JSON.parse(body).Language 
 		  	           +"\nPlot: " + JSON.parse(body).Plot 
-		  	           +"\nActors: " + JSON.parse(body).Actors + '\n'));
-		  	
+									 +"\nActors: " + JSON.parse(body).Actors + '\n'));
+				console.log(text);
+				createLog();
 	  		}   
 		}else {
 			console.log("Error occurred");
@@ -67,10 +84,12 @@ function spotify_song(){
 	    	return console.log('Error occurred: ' + err);
 	  	}else{
 		  	var songInfo = data.tracks.items[0];
-		    console.log(wrap("\nArtist:  " + songInfo.artists[0].name
+		    text = (wrap("\nArtist:  " + songInfo.artists[0].name
 		               + "\nSong Name:  " + songInfo.name
 		               + "\nPreview Url:  " + songInfo.preview_url
-		               + "\nAlbum:  " + songInfo.album.name + "\n"));
+									 + "\nAlbum:  " + songInfo.album.name + "\n"));
+				console.log(text);
+				createLog();
 	  	}	
 	});
 }	
@@ -80,9 +99,13 @@ function mytweets(){
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		if (!error) {
   			for (var t=0; t < tweets.length; t++){
-		    	console.log(wrap("Creation Date:  " + tweets[t].created_at));
-					console.log(wrap("Feed:  " + tweets[t].text + "\n"));
-  			}
+		    	textArr[t] = (wrap("Creation Date:  " + tweets[t].created_at
+														 + "\nFeed:  " + tweets[t].text + "\n"));
+					console.log(textArr[t]);
+				}
+				
+				createLog();
+				
   		}else{
   			console.log(error);	
   			} 	
@@ -106,14 +129,13 @@ function scenario(askMe){
 }
 
 var inputString = process.argv;
-
-
-fs.appendFile('log.txt', inputString + "\n" ,function(err) {
-  if (err) {
-  }
-});
-
 scenario(inputString[2]);
+
+
+
+
+
+
 
 
 
